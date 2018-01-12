@@ -5,7 +5,7 @@
   "freeze": true,
   "indent": 2,
   "newcap": true,
-  "quotmark": "single",
+  "quotmark": "double",
   "maxdepth": 3,
   "maxstatements": 15,
   "maxlen": 80,
