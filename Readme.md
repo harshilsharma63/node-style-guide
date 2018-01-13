@@ -18,7 +18,7 @@ according to your preferences.
 ## Table of contents
 
 ### Formatting
-* [2 Spaces for indentation](#2-spaces-for-indentation)
+* [4 Spaces for indentation](#4-spaces-for-indentation)
 * [Newlines](#newlines)
 * [No trailing whitespace](#no-trailing-whitespace)
 * [Use Semicolons](#use-semicolons)
@@ -58,11 +58,11 @@ according to your preferences.
 
 ## Formatting
 
-You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the formatting settings in your editor. Use the [Node.js Style Guide .editorconfig file](.editorconfig) to have indentation, newslines and whitespace behavior automatically set to the rules set up below.
+You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the formatting settings in your editor. Use the [Node.js Typescript Style Guide .editorconfig file](.editorconfig) to have indentation, newslines and whitespace behavior automatically set to the rules set up below.
 
-### 2 Spaces for indentation
+### 4 Spaces for indentation
 
-Use 2 spaces for indenting your code and swear an oath to never mix tabs and
+Use 4 spaces for indenting your code and swear an oath to never mix tabs and
 spaces - a special kind of hell is awaiting you otherwise.
 
 ### Newlines
@@ -86,26 +86,26 @@ cheap syntactic pleasures.
 [the opposition]: http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding
 [hnsemicolons]: http://news.ycombinator.com/item?id=1547647
 
-### 80 characters per line
+### 100 characters per line
 
-Limit your lines to 80 characters. Yes, screens have gotten much bigger over the
+Limit your lines to 100 characters. Yes, screens have gotten much bigger over the
 last few years, but your brain has not. Use the additional room for split screen,
 your editor supports that, right?
 
-### Use single quotes
+### Use double quotes
 
-Use single quotes, unless you are writing JSON.
+Use double quotes.
 
 *Right:*
 
 ```js
-var foo = 'bar';
+var foo = "bar";
 ```
 
 *Wrong:*
 
 ```js
-var foo = "bar";
+var foo = 'bar';
 ```
 
 ### Opening braces go on the same line
@@ -288,24 +288,6 @@ if (a == '') {
 
 [comparisonoperators]: https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators
 
-### Use multi-line ternary operator
-
-The ternary operator should not be used on a single line. Split it up into multiple lines instead.
-
-*Right:*
-
-```js
-var foo = (a === b)
-  ? 1
-  : 2;
-```
-
-*Wrong:*
-
-```js
-var foo = (a === b) ? 1 : 2;
-```
-
 ### Use descriptive conditions
 
 Any non-trivial conditions should be assigned to a descriptively named variable or function:
@@ -327,6 +309,54 @@ if (password.length >= 4 && /^(?=.*\d).{4,}$/.test(password)) {
   console.log('losing');
 }
 ```
+
+## Comments
+
+### Use slashes for comments
+
+Use slashes for both single line and multi line comments. Try to write
+comments that explain higher level mechanisms or clarify difficult
+segments of your code. Don't use comments to restate trivial things.
+
+*Right:*
+
+```js
+// 'ID_SOMETHING=VALUE' > ['ID_SOMETHING=VALUE', 'SOMETHING', 'VALUE']
+var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+
+// This function has a nasty side effect where a failure to increment a
+// redis counter used for statistics will cause an exception. This needs
+// to be fixed in a later iteration.
+function loadUser(id, cb) {
+  // ...
+}
+
+var isSessionValid = (session.expires < Date.now());
+if (isSessionValid) {
+  // ...
+}
+```
+
+*Wrong:*
+
+```js
+// Execute a regex
+var matches = item.match(/ID_([^\n]+)=([^\n]+)/);
+
+// Usage: loadUser(5, function() { ... })
+function loadUser(id, cb) {
+  // ...
+}
+
+// Check if the session is valid
+var isSessionValid = (session.expires < Date.now());
+// If the session is valid
+if (isSessionValid) {
+  // ...
+}
+```
+
+
 
 ## Functions
 
@@ -475,52 +505,6 @@ User.findOne({ name: 'foo' }).populate('bar')
   });
 ```
 
-## Comments
-
-### Use slashes for comments
-
-Use slashes for both single line and multi line comments. Try to write
-comments that explain higher level mechanisms or clarify difficult
-segments of your code. Don't use comments to restate trivial things.
-
-*Right:*
-
-```js
-// 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE', 'SOMETHING', 'VALUE']
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
-
-// This function has a nasty side effect where a failure to increment a
-// redis counter used for statistics will cause an exception. This needs
-// to be fixed in a later iteration.
-function loadUser(id, cb) {
-  // ...
-}
-
-var isSessionValid = (session.expires < Date.now());
-if (isSessionValid) {
-  // ...
-}
-```
-
-*Wrong:*
-
-```js
-// Execute a regex
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/);
-
-// Usage: loadUser(5, function() { ... })
-function loadUser(id, cb) {
-  // ...
-}
-
-// Check if the session is valid
-var isSessionValid = (session.expires < Date.now());
-// If the session is valid
-if (isSessionValid) {
-  // ...
-}
-```
-
 ## Miscellaneous
 
 ### Object.freeze, Object.preventExtensions, Object.seal, with, eval
@@ -567,3 +551,4 @@ if (a.empty()) {
   console.log('losing');
 }
 ```
+
