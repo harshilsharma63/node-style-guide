@@ -18,7 +18,7 @@ according to your preferences.
 ## Table of contents
 
 ### Formatting
-* [4 Spaces for indentation](#4-spaces-for-indentation)
+* [1 Tab for indentation](#1-tab-for-indentation)
 * [Newlines](#newlines)
 * [No trailing whitespace](#no-trailing-whitespace)
 * [Use Semicolons](#use-semicolons)
@@ -60,9 +60,9 @@ according to your preferences.
 
 You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the formatting settings in your editor. Use the [Node.js Typescript Style Guide .editorconfig file](.editorconfig) to have indentation, newslines and whitespace behavior automatically set to the rules set up below.
 
-### 4 Spaces for indentation
+### 1 tab for indentation
 
-Use 4 spaces for indenting your code and swear an oath to never mix tabs and
+Use 1 tab for indenting your code and swear an oath to never mix tabs and
 spaces - a special kind of hell is awaiting you otherwise.
 
 ### Newlines
